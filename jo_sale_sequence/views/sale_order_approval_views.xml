@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_approval_fields" model="ir.ui.view">
+        <field name="name">sale.order.approval.fields.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="drawing_approved_by_customer" widget="boolean_toggle"/>
+                <field name="approved_for_dispatch" widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

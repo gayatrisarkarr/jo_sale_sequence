@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Product Template: add HSN/SAC after barcode -->
+    <record id="view_product_template_hsn" model="ir.ui.view">
+        <field name="name">product.template.hsn.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="barcode" position="after">
+                <field name="hsn_sac_code"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Sale Order Line: add HSN/SAC column after product -->
+    <record id="view_sale_order_line_hsn" model="ir.ui.view">
+        <field name="name">sale.order.line.hsn.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_template_id']" position="after">
+                <field name="hsn_sac_code" string="HSN/SAC" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

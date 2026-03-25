@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_url_form" model="ir.ui.view">
+        <field name="name">product.template.url.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="product_url" widget="url" string="Product URL"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Product Variants List: add URL after uom_id -->
+    <record id="view_product_variant_url_list" model="ir.ui.view">
+        <field name="name">product.product.url.list</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <field name="product_url_link" widget="html" string="Product URL" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

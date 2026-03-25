@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sale_order_joflo_checklist" model="ir.ui.view">
+        <field name="name">sale.order.joflo.checklist.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='order_lines']" position="after">
+                <page string="Joflo Check List" name="joflo_check_list">
+                    <group>
+                        <group>
+                            <field name="is_bg_submitted" widget="boolean_toggle"/>
+                            <field name="bg_submitted_date"/>
+                            <field name="bg_expiry_date"/>
+                        </group>
+                        <group>
+                            <field name="is_retention_money_released" widget="boolean_toggle"/>
+                            <field name="bg_received_from_customer" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

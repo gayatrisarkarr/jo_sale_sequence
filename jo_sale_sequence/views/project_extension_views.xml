@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_project_extension_wo_fields" model="ir.ui.view">
+        <field name="name">project.project.wo.fields.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="sale_project.project_project_view_form_simplified_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[field[@name='allow_billable']]" position="after">
+                <setting class="col-lg-12" help="Select Work Order Type">
+                    <field name="wo_type" widget="radio"/>
+                </setting>
+                <setting class="col-lg-12">
+                    <field name="wo_id" string="WO ID"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_wo_id_form" model="ir.ui.view">
+        <field name="name">project.project.wo.id.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//field[@name='label_tasks']" position="after">
+                <field name="wo_type" string="WO Type"/>
+                <field name="wo_id" string="WO ID" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_wo_id_list" model="ir.ui.view">
+        <field name="name">project.project.wo.id.list</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="wo_id" string="WO ID" readonly="1" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
